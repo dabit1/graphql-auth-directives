@@ -8,7 +8,7 @@
     "start-test-setup": "nodemon ./test/helpers/test-setup.js --exec babel-node -e js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir dist",
-    "precommit": "npm run build && lint-staged",
+    "precommit": "lint-staged",
     "prepublish": "npm run build",
     "pretest": "npm run build"
   },
