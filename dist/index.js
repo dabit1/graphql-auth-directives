@@ -228,9 +228,15 @@ var verifyAndDecodeToken = function verifyAndDecodeToken(_ref) {
     });
     return decoded;
   } catch (err) {
-    throw new _errors.AuthorizationError({
-      message: "You are not authorized for this resource"
-    });
+    if (err.name === "TokenExpiredError") {
+      throw new _errors.AuthorizationError({
+        message: "Your token is expired"
+      });
+    } else {
+      throw new _errors.AuthorizationError({
+        message: "You are not authorized for this resource"
+      });
+    }
   }
 };
 
